@@ -39,10 +39,10 @@ def mux16bit(inputs1, inputs2, sel):
 
 # multi input basic gates
 def and8way(inputs):
-	return all(inputs)
+	return int(all(inputs))
 
 def or8way(inputs):
-	return any(inputs)
+	return int(any(inputs))
 
 # multi input mux
 def mux4way16bit(inputs1, inputs2, inputs3, inputs4, sels):
@@ -74,14 +74,14 @@ def mux8way16bit(inputs1, inputs2, inputs3, inputs4, inputs5, inputs6, inputs7, 
 		return inputs8
 
 # multi output dmux
-def dmux4way(inputs,sels):
-	out = np.zeros([4,16])
+def dmux4way(a,sels):
+	out = np.zeros([4])
 	idx = int("".join(map(str,sels)), base=2)
-	out[idx] = inputs
+	out[idx] = a
 	return out
 
-def dmux8way(inputs,sels):
-	out = np.zeros([8,16])
+def dmux8way(a,sels):
+	out = np.zeros([8])
 	idx = int("".join(map(str,sels)), base=2)
-	out[idx] = inputs
+	out[idx] = a
 	return out
