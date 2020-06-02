@@ -12,7 +12,8 @@ This project is computer simulator written by Python based on the content of Jap
     
     * 半加算器や全加算器は基本1ビットのためのものである。16ビット加算器は16ビットと言っているが任意のビットで計算できるように実装してある。
       本ALUは参考文献のALUの流用であり、16ビットを基本として設計されている。
-      Half and Full adder is for 1 bit calculation. adder16bit function can calculate any bits of data, since it is designed for general purpose. The architecture of ALU is from referenced book. Word of this machine is set to be 16 bit.
+      Half and Full adder is for 1 bit calculation. adder16bit function can calculate any bits of data, since it is designed for
+      general purpose. The architecture of ALU is from referenced book. Word of this machine is set to be 16 bit.
 
 Reference lists:  
 コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方　オライリージャパン (2015/3/25)
