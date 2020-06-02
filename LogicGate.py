@@ -1,5 +1,6 @@
 import numpy as np
 # AND OR NOT is basic gates therefore not implemented
+# if _ then _ else _ is also assumed to be implemented as basic gate (mux gate can be interpleted as if_then_else_ gate)
 
 # Basic gate
 def nand(a,b):
