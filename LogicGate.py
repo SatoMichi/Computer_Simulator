@@ -9,6 +9,9 @@ def nand(a,b):
 def xor(a,b):
 	return int(((not a) and b) or (a and (not b)))
 
+def nor(a,b):
+	return int(not (a or b))
+
 # mux, dmux
 def mux(a,b,sel):
 	return a if sel == 0 else b
