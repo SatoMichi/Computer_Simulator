@@ -47,8 +47,12 @@ class RAMn:
         self.out = [0]*16
     
     def next(self, inputs, address, load, clock=1):
-        reg = self.memory[int("".join(map(str,address)), base=2)]
-        self.out = reg.next(inputs,load,clock)
+        regs = lg.dmux8way(load,address)
+        for l,reg in zip(regs,self.memory):
+            reg.next(inputs,l,clock)
+        self.out = lg.mux8way16bit(self.memory[0],self.memory[1],self.memory[2],self.memory[3],
+                                self.memory[4],self.memory[5],self.memory[6],self.memory[7],address)
+        self.out = [b.out for b in self.out.register]
         return self.out
 
     def __str__(self):
