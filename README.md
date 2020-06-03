@@ -18,7 +18,8 @@ This project is computer simulator written by Python based on the content of Jap
     * 参考にした本の中ではDフリップフロップは基本要素として実装例は示されていないが、本プロジェクトでは論理ゲートの記憶装置への応用方法を
       理解するためにSRラッチのレベルから実装を行ってる。しかしながら、最終的な記憶装置はシンプルさを優先してPythonのリストを使っている。
       In the referenced book, D-Flip-Flop Gate (DFF) is treated as basic component of the circuit, therefor the implementation is not
-      presented. However, in this project, the DFF is implemented form the level of SRLatch (Logic Gate), since it will be good experience to understand the use of logic gate in Sequencial Circuit. However, as a RAM, Python's list is used for simpler representation of the
+      presented. However, in this project, the DFF is implemented form the level of SRLatch (Logic Gate), since it will be good experience 
+      to understand the use of logic gate in Sequencial Circuit. However, as a RAM, Python's list is used for simpler representation of the
       simulatior.
 
 Reference lists:  
