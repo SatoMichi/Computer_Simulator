@@ -67,8 +67,14 @@ class RAM:
         data = lg.mux16bit(reg,inputs,load)
         if clock:
             self.memory[int("".join(map(str,address)), base=2)] = data
-        self.out = list(reg)
+        self.out = list(reg.astype(int))
         return self.out
+    
+    def load(self,address):
+        return self.next([0]*16,address,load=0)
+    
+    def write(self,inputs,address):
+        return self.next(inputs,address,load=1)
     
     def __str__(self):
         return str(self.memory)
