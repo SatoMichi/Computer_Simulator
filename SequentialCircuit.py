@@ -1,4 +1,5 @@
 import LogicGate as lg
+import ArithmeticLogicUnit as alu
 import numpy as np
 
 def SRLatch(s,r,q):
@@ -78,3 +79,22 @@ class RAM:
     
     def __str__(self):
         return str(self.memory)
+
+class PC:
+    def __init__(self):
+        self.reg = [0]*16
+    
+    def next(self,inputs,inc,res,load,clock=1):
+        if res and clock:
+            self.reg = [0]*16
+        elif load and clock:
+            self.reg = inputs
+        elif inc and clock:
+            self.reg = alu.inc16bit(self.reg)
+        else:
+            self.reg = self.reg
+        
+        return self.reg
+    
+    def __str__(self):
+        return str(self.reg)
