@@ -39,8 +39,8 @@ class Register:
     def __str__(self):
         return str([b.out for b in self.register])
 
-class RAMn:
-    def __init__(self,n):
+class RAM8:
+    def __init__(self,n=8):
         self.memory = [""]*n
         for i in range(n):
             self.memory[i] = Register()
@@ -59,6 +59,31 @@ class RAMn:
         s = ""
         for reg in self.memory:
             s += str(reg)+"\n"
+        return s
+
+class RAM64:
+    def __init__(self,n=8):
+        self.memory = [""]*n
+        for i in range(n):
+            self.memory[i] = RAM8()
+        self.out = [0]*16
+    
+    def next(self, inputs, address, load, clock=1):
+        # len(address) = 6
+        loads = lg.dmux8way(load,address[:3])
+        for l,ram8 in zip(loads,self.memory):
+            ram8.next(inputs,address[3:],l,clock)
+        self.out = lg.mux8way16bit(self.memory[0],self.memory[1],self.memory[2],self.memory[3],
+                                self.memory[4],self.memory[5],self.memory[6],self.memory[7],address[:3]).memory
+        self.out = lg.mux8way16bit(self.out[0],self.out[1],self.out[2],self.out[3],
+                                self.out[4],self.out[5],self.out[6],self.out[7],address[3:])
+        self.out = [b.out for b in self.out.register]
+        return self.out
+
+    def __str__(self):
+        s = ""
+        for ram in self.memory:
+            s += str(ram)
         return s
 
 # simplified RAM
