@@ -1,9 +1,6 @@
 import numpy as np
 import LogicGate as lg
 
-def flip(a):
-    return list(map(lambda x: 0 if x else 1, a))
-
 def halfAdder(a,b):
     carry = int(a and b)
     result = lg.xor(a,b)
@@ -35,17 +32,17 @@ def ALU16bit(a,b,cont):
     if cont[0]:
         a = [0]*16
     if cont[1]:
-        a = flip(a)
+        a = lg.not16bit(a)
     if cont[2]:
         b = [0]*16
     if cont[3]:
-        b = flip(b)
+        b = lg.not16bit(b)
     if cont[4]:
         out = adder16bit(a,b)
     else:
         out = lg.and16bit(a,b)
     if cont[5]:
-        out = flip(out)
+        out = lg.not16bit(out)
     zr = 1 if out == [0]*16 else 0
     ng = 1 if out[0] == 1 else 0
 
