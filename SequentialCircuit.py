@@ -90,13 +90,15 @@ class RAM64:
 
 class Register:
     def __init__(self):
-        self.register = [""]*16
+        self.register = np.zeros([16])
+        self.out = list(self.register.astype(int))
     
     def next(self, inputs, load, clock=1):
         data = lg.mux16bit(self.register,inputs,load)
         for i,d in enumerate(data):
             self.register[i] = d
-        return self.register
+        self.out = list(self.register.astype(int))
+        return self.out
     
     def __str__(self):
         return str(self.register)
