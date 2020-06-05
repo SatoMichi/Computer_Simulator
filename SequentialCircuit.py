@@ -24,7 +24,7 @@ class Bit:
         self.out = DFF(data,self.out,clock)
         return self.out
 
-class Register:
+class Register_:
     def __init__(self):
         self.register = [""]*16
         for i in range(16):
@@ -43,7 +43,7 @@ class RAM8:
     def __init__(self,n=8):
         self.memory = [""]*n
         for i in range(n):
-            self.memory[i] = Register()
+            self.memory[i] = Register_()
         self.out = [0]*16
     
     def next(self, inputs, address, load, clock=1):
@@ -86,7 +86,21 @@ class RAM64:
             s += str(ram)
         return s
 
-# simplified RAM
+# simplified implementation Version
+
+class Register:
+    def __init__(self):
+        self.register = [""]*16
+    
+    def next(self, inputs, load, clock=1):
+        data = lg.mux16bit(self.register,inputs,load)
+        for i,d in enumerate(data):
+            self.register[i] = d
+        return self.register
+    
+    def __str__(self):
+        return str(self.register)
+
 class RAM:
     def __init__(self,n):
         self.memory = np.zeros([n,16])
