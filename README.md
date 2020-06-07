@@ -21,6 +21,11 @@ This project is computer simulator written by Python based on the content of Jap
       presented. However, in this project, the DFF is implemented form the level of SRLatch (Logic Gate), since it will be good experience 
       to understand the use of logic gate in Sequencial Circuit. However, as a RAM, Python's Numpy list is used for simpler representation 
       of the simulatior.
+    
+    * クロックの概念を取り去った実装に挑戦したが、レジスターの読み込みタイミングを再現するのが難しく、CPUを参考文献のように完全な形で
+      再現することはできなかった。コンピューターアーキテクチャ自体は参考文献に忠実に作った。
+      Since the code tried to remove the concept of the clock, the CPU cannot be completed as referenced book, due to the difficulty
+      in loading timing of register. The Computer architecture is implemented as contents of referenced book.
 
 Reference lists:  
 コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方　オライリージャパン (2015/3/25)
