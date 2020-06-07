@@ -103,6 +103,9 @@ class Register:
     def __str__(self):
         return str(self.register)
 
+    def num(self):
+        return int("".join(map(str, self.register.astype(int))),base=2)
+
 class RAM:
     def __init__(self,n):
         self.memory = np.zeros([n,16])
@@ -143,3 +146,6 @@ class PC:
     
     def __str__(self):
         return str(self.reg)
+    
+    def num(self):
+        return int("".join(list(map(str, self.reg))),base=2)
